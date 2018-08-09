@@ -1,0 +1,5 @@
+CREATE DEFINER = CURRENT_USER TRIGGER `oust`.`employe_BEFORE_INSERT` BEFORE INSERT ON `employe` FOR EACH ROW
+BEGIN
+	SET NEW.last_update = CURRENT_TIMESTAMP;
+	SET NEW.email = LOWER(CONCAT(NEW.prenom, '.', NEW.nom, '@oust.ch'));
+END
